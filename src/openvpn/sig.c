@@ -52,6 +52,7 @@ struct signame {
     const char *lower;
 };
 
+// 程序某个时刻仅记录一个信号，当在一个loop周期内发生多个信号时，仅保留最高等级的那个即可,妙哉
 static const struct signame signames[] = {
     { SIGINT, 5, "SIGINT",  "sigint"},
     { SIGTERM, 4, "SIGTERM", "sigterm" },

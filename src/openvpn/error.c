@@ -172,6 +172,7 @@ error_reset(void)
     default_out = OPENVPN_MSG_FP;
     default_err = OPENVPN_MSG_FP;
 
+// 没想到还有这个隐藏的日志文件
 #ifdef OPENVPN_DEBUG_COMMAND_LINE
     msgfp = fopen(OPENVPN_DEBUG_FILE, "w");
     if (!msgfp)

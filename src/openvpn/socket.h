@@ -100,7 +100,7 @@ struct link_socket_actual
 #endif
 };
 
-/* IP addresses which are persistent across SIGUSR1s */
+/* IP addresses which are persistent(³ÖÐø) across SIGUSR1s */
 struct link_socket_addr
 {
     struct addrinfo *bind_local;

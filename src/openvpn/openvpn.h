@@ -482,7 +482,8 @@ struct context
                                  *   configuration file. */
 
     bool first_time;            /**< True on the first iteration of
-                                 *   OpenVPN's main loop. */
+                                 *   OpenVPN's main loop. 
+                                 * 是否是第一次运行 main loop 循环 */
 
     /* context modes */
 #define CM_P2P            0  /* standalone point-to-point session or client */

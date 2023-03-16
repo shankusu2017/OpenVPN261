@@ -40,6 +40,7 @@ enum dns_security {
     DNS_SECURITY_OPTIONAL
 };
 
+// DNS ´«Êä·½Ê½
 enum dns_server_transport {
     DNS_TRANSPORT_UNSET,
     DNS_TRANSPORT_PLAIN,

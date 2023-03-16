@@ -774,12 +774,13 @@ dns_addr_safe(const char *addr)
 bool
 ip_or_dns_addr_safe(const char *addr, const bool allow_fqdn)
 {
+    // 正确的 ip 地址
     if (ip_addr_dotted_quad_safe(addr))
     {
         return true;
     }
     else if (allow_fqdn)
-    {
+    {   // 合法的域名？
         return dns_addr_safe(addr);
     }
     else

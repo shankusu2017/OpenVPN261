@@ -103,7 +103,7 @@ struct connection_entry
     const char *local_port;
     bool local_port_defined;
     const char *remote_port;
-    const char *local;
+    const char *local;          // 本端的 socket 接口(eg: 服务器通常为 0.0.0.0)
     const char *remote;
     bool remote_float;
     bool bind_defined;
@@ -257,7 +257,7 @@ struct options
     /* list of options that should be ignored even if unknown */
     const char **ignore_unknown_option;
 
-    /* persist parms */
+    /* persist（坚持） parms */
     bool persist_config;
     int persist_mode;
 
@@ -274,7 +274,7 @@ struct options
 
     /* Networking parms */
     int connect_retry_max;
-    struct connection_entry ce;
+    struct connection_entry ce;                // 远端连接的实体
     struct connection_list *connection_list;
 
     struct remote_list *remote_list;
@@ -300,15 +300,15 @@ struct options
 
     struct dns_options dns_options;
 
-    bool remote_random;
+    bool remote_random;                     // 随机选一个远端的服务器地址
     const char *ipchange;
     const char *dev;
     const char *dev_type;
     const char *dev_node;
     const char *lladdr;
     int topology; /* one of the TOP_x values from proto.h */
-    const char *ifconfig_local;
-    const char *ifconfig_remote_netmask;
+    const char *ifconfig_local;             // 本端 tun 设备 ip?
+    const char *ifconfig_remote_netmask;    // 远端 tun 设备 ip?
     const char *ifconfig_ipv6_local;
     int ifconfig_ipv6_netbits;
     const char *ifconfig_ipv6_remote;
