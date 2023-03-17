@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  *  OpenVPN -- An application to securely tunnel IP networks
  *             over a single UDP port, with support for SSL/TLS-based
  *             session authentication and key exchange,
@@ -103,7 +103,7 @@ struct connection_entry
     const char *local_port;
     bool local_port_defined;
     const char *remote_port;
-    const char *local;          // ±¾¶ËµÄ socket ½Ó¿Ú(eg: ·şÎñÆ÷Í¨³£Îª 0.0.0.0)
+    const char *local;          // æœ¬ç«¯çš„ socket æ¥å£(eg: æœåŠ¡å™¨é€šå¸¸ä¸º 0.0.0.0)
     const char *remote;
     bool remote_float;
     bool bind_defined;
@@ -257,7 +257,7 @@ struct options
     /* list of options that should be ignored even if unknown */
     const char **ignore_unknown_option;
 
-    /* persist£¨¼á³Ö£© parms */
+    /* persistï¼ˆåšæŒï¼‰ parms */
     bool persist_config;
     int persist_mode;
 
@@ -274,7 +274,7 @@ struct options
 
     /* Networking parms */
     int connect_retry_max;
-    struct connection_entry ce;                // Ô¶¶ËÁ¬½ÓµÄÊµÌå
+    struct connection_entry ce;                // è¿œç«¯è¿æ¥çš„å®ä½“
     struct connection_list *connection_list;
 
     struct remote_list *remote_list;
@@ -300,15 +300,15 @@ struct options
 
     struct dns_options dns_options;
 
-    bool remote_random;                     // Ëæ»úÑ¡Ò»¸öÔ¶¶ËµÄ·şÎñÆ÷µØÖ·
+    bool remote_random;                     // éšæœºé€‰ä¸€ä¸ªè¿œç«¯çš„æœåŠ¡å™¨åœ°å€
     const char *ipchange;
     const char *dev;
     const char *dev_type;
     const char *dev_node;
     const char *lladdr;
     int topology; /* one of the TOP_x values from proto.h */
-    const char *ifconfig_local;             // ±¾¶Ë tun Éè±¸ ip?
-    const char *ifconfig_remote_netmask;    // Ô¶¶Ë tun Éè±¸ ip?
+    const char *ifconfig_local;             // æœ¬ç«¯ tun è®¾å¤‡ ip?
+    const char *ifconfig_remote_netmask;    // è¿œç«¯ tun è®¾å¤‡ ip?
     const char *ifconfig_ipv6_local;
     int ifconfig_ipv6_netbits;
     const char *ifconfig_ipv6_remote;
@@ -375,7 +375,7 @@ struct options
     bool up_restart;
     bool daemon;
 
-    int remap_sigusr1;
+    int remap_sigusr1;      // å°† usr1 ä¿¡å·é‡æ˜ å°„åˆ° SIGHUPã€SIGTERM
 
     bool log;
     bool suppress_timestamps;
@@ -388,7 +388,7 @@ struct options
     int gremlin;
 #endif
 
-    const char *status_file;
+    const char *status_file;    // çŠ¶æ€æ–‡ä»¶è·¯å¾„ä»¥åŠå†™å…¥é¢‘ç‡
     int status_file_version;
     int status_file_update_freq;
 
@@ -445,7 +445,7 @@ struct options
     const char *management_certificate;
 #endif
     /* Mask of MF_ values of manage.h */
-    unsigned int management_flags;  /* ÊÇ·ñĞèÒªÃÜÂë£¬ÊÇ·ñ¿ªÆô sock ÓòµÈµÈ*/
+    unsigned int management_flags;  /* æ˜¯å¦éœ€è¦å¯†ç ï¼Œæ˜¯å¦å¼€å¯ sock åŸŸç­‰ç­‰*/
 
 #ifdef ENABLE_PLUGIN
     struct plugin_option_list *plugin_list;

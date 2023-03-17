@@ -172,7 +172,7 @@ error_reset(void)
     default_out = OPENVPN_MSG_FP;
     default_err = OPENVPN_MSG_FP;
 
-// Ã»Ïëµ½»¹ÓĞÕâ¸öÒş²ØµÄÈÕÖ¾ÎÄ¼ş
+// æ²¡æƒ³åˆ°è¿˜æœ‰è¿™ä¸ªéšè—çš„æ—¥å¿—æ–‡ä»¶
 #ifdef OPENVPN_DEBUG_COMMAND_LINE
     msgfp = fopen(OPENVPN_DEBUG_FILE, "w");
     if (!msgfp)
@@ -578,7 +578,8 @@ redirect_stdout_stderr(const char *file, bool append)
         }
 
         /* redirect C-library stdout/stderr to log file
-         * next line ÊÇ¾«»ª 
+         * next line æ˜¯ç²¾å
+         * å­—ç¬¦é›†ç¼–ç æµ‹è¯•
          */
         if (_dup2(log_fd, 1) == -1 || _dup2(log_fd, 2) == -1)
         {

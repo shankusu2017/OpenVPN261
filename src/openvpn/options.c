@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  *  OpenVPN -- An application to securely tunnel IP networks
  *             over a single UDP port, with support for SSL/TLS-based
  *             session authentication and key exchange,
@@ -4886,7 +4886,7 @@ static int
 positive_atoi(const char *str)
 {
     const int i = atoi(str);
-    return i < 0 ? 0 : i;
+    return i < 0 ? 0 : i;   /* è¿”å› >= 0 */
 }
 
 #ifdef _WIN32  /* This function is only used when compiling on Windows */
@@ -5357,7 +5357,7 @@ parse_argv(struct options *options,
     else
     {
         /* parse command line 
-         * µ¥¸ö²ÎÊı¿ÉÒÔÓĞN¸öÖµ 
+         * ä¸€ä¸ªå‚æ•°å¯ä»¥å¸¦å¤šä¸ªå€¼
         */
         for (int i = 1; i < argc; ++i)
         {
@@ -6104,7 +6104,7 @@ add_option(struct options *options,
                 uninit_options(&sub);
                 goto err;
             }   
-            *e = sub.ce;    // ¼Óµ½ options ÖĞÀ´ 
+            *e = sub.ce;    // åŠ è¿›æ¥
             gc_transfer(&options->gc, &sub.gc);
             uninit_options(&sub);
         }
@@ -6201,7 +6201,7 @@ add_option(struct options *options,
             {
                 goto err;
             }
-            *e = re;    // ¼Óµ½ options ÖĞÀ´
+            *e = re;    // åŠ è¿›æ¥
         }
         else if (permission_mask & OPT_P_CONNECTION)
         {
@@ -6377,7 +6377,7 @@ add_option(struct options *options,
         redirect_stdout_stderr(p[1], false);
     }
     else if (streq(p[0], "suppress-timestamps") && !p[1])
-    {   /* Ğ´ÈÕÖ¾Ê±¶ªÆúÊ±¼ä´Á */
+    {   /* å¿½ç•¥æ—¶é—´æˆ³ */
         VERIFY_PERMISSION(OPT_P_GENERAL);
         options->suppress_timestamps = true;
         set_suppress_timestamps(true);
