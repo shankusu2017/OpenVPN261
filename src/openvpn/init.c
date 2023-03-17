@@ -1,4 +1,4 @@
-/*
+﻿/*
  *  OpenVPN -- An application to securely tunnel IP networks
  *             over a single TCP/UDP port, with support for SSL/TLS-based
  *             session authentication and key exchange,
@@ -482,6 +482,7 @@ init_connection_list(struct context *c)
     struct connection_list *l = c->options.connection_list;
 
     l->current = -1;
+    /* 洗牌算法的经典应用 */
     if (c->options.remote_random)
     {
         int i;

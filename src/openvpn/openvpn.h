@@ -1,4 +1,4 @@
-/*
+﻿/*
  *  OpenVPN -- An application to securely tunnel IP networks
  *             over a single TCP/UDP port, with support for SSL/TLS-based
  *             session authentication and key exchange,
@@ -266,6 +266,7 @@ struct context_2
 
     /*
      * Statistics
+     * 读写了多少 bytes 啊之类的
      */
     counter_type tun_read_bytes;
     counter_type tun_write_bytes;
@@ -483,7 +484,7 @@ struct context
 
     bool first_time;            /**< True on the first iteration of
                                  *   OpenVPN's main loop. 
-                                 * �Ƿ��ǵ�һ������ main loop ѭ�� */
+                                 * 是否是第一次运行 main loop 循环 */
 
     /* context modes */
 #define CM_P2P            0  /* standalone point-to-point session or client */

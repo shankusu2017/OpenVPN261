@@ -5190,6 +5190,12 @@ check_inline_file(struct in_src *is, char *p[], struct gc_arena *gc)
     return num_inline_lines;
 }
 
+/* 处理诸如下列这种格式的配置
+ * <auth-user-pass>
+ *  gc45f7xjy7e9t4pk
+ *  r6hvxzveeen98k2m
+ * </auth-user-pass>
+ */
 static int
 check_inline_file_via_fp(FILE *fp, char *p[], struct gc_arena *gc)
 {

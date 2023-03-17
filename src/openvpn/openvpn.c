@@ -1,4 +1,4 @@
-/*
+﻿/*
  *  OpenVPN -- An application to securely tunnel IP networks
  *             over a single TCP/UDP port, with support for SSL/TLS-based
  *             session authentication and key exchange,
@@ -262,7 +262,7 @@ openvpn_main(int argc, char *argv[])
 #endif
             show_library_versions(M_INFO);
 
-            /* misc stuff */
+            /* misc stuff（杂项） */
             pre_setup(&c.options);
 
             /* test crypto? */
