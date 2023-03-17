@@ -4951,9 +4951,9 @@ parse_line(const char *line,
         {
             if (state == STATE_INITIAL)
             {
-                if (!space(in))
+                if (!space(in)) /* 开头的空格直接忽略 */
                 {
-                    if (in == ';' || in == '#') /* comment */
+                    if (in == ';' || in == '#') /* comment, 这两个字符开头，标明本行是注释 */
                     {
                         break;
                     }
@@ -5221,7 +5221,7 @@ add_option(struct options *options,
            unsigned int *option_types_found,
            struct env_set *es);
 
-/* 解析配置文件(就是命令行中 --config 那个参数的值) */
+/* 解析配置文件 */
 static void
 read_config_file(struct options *options,
                  const char *file,
@@ -5265,7 +5265,7 @@ read_config_file(struct options *options,
                 }
 
                 /* Ignore UTF-8 BOM at start of stream */
-                if (line_num == 1 && strncmp(line, "\xEF\xBB\xBF", 3) == 0)
+                if (line_num == 1 && strncmp(line, "\xEF\xBB\xBF", 3) == 0) /* 考虑的真周到 */
                 {
                     offset = 3;
                 }
