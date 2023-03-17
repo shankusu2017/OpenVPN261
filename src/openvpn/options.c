@@ -5356,7 +5356,9 @@ parse_argv(struct options *options,
     }
     else
     {
-        /* parse command line */
+        /* parse command line 
+         * 单个参数可以有N个值 
+        */
         for (int i = 1; i < argc; ++i)
         {
             char *p[MAX_PARMS+1];
@@ -6101,8 +6103,8 @@ add_option(struct options *options,
             {
                 uninit_options(&sub);
                 goto err;
-            }
-            *e = sub.ce;
+            }   
+            *e = sub.ce;    // 加到 options 中来 
             gc_transfer(&options->gc, &sub.gc);
             uninit_options(&sub);
         }
@@ -6199,7 +6201,7 @@ add_option(struct options *options,
             {
                 goto err;
             }
-            *e = re;
+            *e = re;    // 加到 options 中来
         }
         else if (permission_mask & OPT_P_CONNECTION)
         {
@@ -6375,7 +6377,7 @@ add_option(struct options *options,
         redirect_stdout_stderr(p[1], false);
     }
     else if (streq(p[0], "suppress-timestamps") && !p[1])
-    {
+    {   /* 写日志时丢弃时间戳 */
         VERIFY_PERMISSION(OPT_P_GENERAL);
         options->suppress_timestamps = true;
         set_suppress_timestamps(true);

@@ -577,7 +577,9 @@ redirect_stdout_stderr(const char *file, bool append)
             msg(M_ERR, "Error: --log redirect failed due to _fdopen");
         }
 
-        /* redirect C-library stdout/stderr to log file */
+        /* redirect C-library stdout/stderr to log file
+         * next line ÊÇ¾«»ª 
+         */
         if (_dup2(log_fd, 1) == -1 || _dup2(log_fd, 2) == -1)
         {
             msg(M_WARN, "Error: --log redirect of stdout/stderr failed");

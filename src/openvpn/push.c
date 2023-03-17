@@ -871,6 +871,7 @@ clone_push_list(struct options *o)
     }
 }
 
+/* 添加一个 push 选项 */
 void
 push_options(struct options *o, char **p, int msglevel, struct gc_arena *gc)
 {

@@ -445,7 +445,7 @@ struct options
     const char *management_certificate;
 #endif
     /* Mask of MF_ values of manage.h */
-    unsigned int management_flags;
+    unsigned int management_flags;  /* 是否需要密码，是否开启 sock 域等等*/
 
 #ifdef ENABLE_PLUGIN
     struct plugin_option_list *plugin_list;
