@@ -5221,6 +5221,7 @@ add_option(struct options *options,
            unsigned int *option_types_found,
            struct env_set *es);
 
+/* 解析配置文件(就是命令行中 --config 那个参数的值) */
 static void
 read_config_file(struct options *options,
                  const char *file,
@@ -5329,6 +5330,7 @@ read_config_string(const char *prefix,
     secure_memzero(line, sizeof(line));
 }
 
+/* 解析命令行配置的入口 */
 void
 parse_argv(struct options *options,
            const int argc,
@@ -5673,6 +5675,7 @@ key_is_external(const struct options *options)
     return ret;
 }
 
+/* 添加一个配置，所有支持的配置以及相关的参数限制均可通过本函数进行了解 */
 static void
 add_option(struct options *options,
            char *p[],

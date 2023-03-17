@@ -21,6 +21,10 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+/*
+ * 封装了平台相关的系统调用,在这里你可以了解到 unix-like 和 windows 的相关函数 
+ */
+
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #elif defined(_MSC_VER)
