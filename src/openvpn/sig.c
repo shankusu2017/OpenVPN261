@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  *  OpenVPN -- An application to securely tunnel IP networks
  *             over a single TCP/UDP port, with support for SSL/TLS-based
  *             session authentication and key exchange,
@@ -52,7 +52,7 @@ struct signame {
     const char *lower;
 };
 
-// ³ÌĞòÄ³¸öÊ±¿Ì½ö¼ÇÂ¼Ò»¸öĞÅºÅ£¬µ±ÔÚÒ»¸öloopÖÜÆÚÄÚ·¢Éú¶à¸öĞÅºÅÊ±£¬½ö±£Áô×î¸ßµÈ¼¶µÄÄÇ¸ö¼´¿É,ÃîÔÕ
+// ç¨‹åºæŸä¸ªæ—¶åˆ»ä»…è®°å½•ä¸€ä¸ªä¿¡å·ï¼Œå½“åœ¨ä¸€ä¸ªloopå‘¨æœŸå†…å‘ç”Ÿå¤šä¸ªä¿¡å·æ—¶ï¼Œä»…ä¿ç•™æœ€é«˜ç­‰çº§çš„é‚£ä¸ªå³å¯,å¦™å“‰
 static const struct signame signames[] = {
     { SIGINT, 5, "SIGINT",  "sigint"},
     { SIGTERM, 4, "SIGTERM", "sigterm" },
@@ -475,6 +475,8 @@ process_signal(struct context *c)
     return ret;
 }
 
+
+/* è®¾ç½®ä¿¡æ¯æ ‡å¿—ï¼Œè¡¨ç¤ºè¿›ç¨‹æ”¶åˆ°äº†æŸä¸ªsig */
 void
 register_signal(struct signal_info *si, int sig, const char *text)
 {
