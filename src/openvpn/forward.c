@@ -1,4 +1,4 @@
-/*
+﻿/*
  *  OpenVPN -- An application to securely tunnel IP networks
  *             over a single TCP/UDP port, with support for SSL/TLS-based
  *             session authentication and key exchange,
@@ -803,7 +803,7 @@ check_coarse_timers(struct context *c)
     c->c2.timeval.tv_sec = BIG_TIMEOUT;
     c->c2.timeval.tv_usec = 0;
     process_coarse_timers(c);
-    c->c2.coarse_timer_wakeup = now + c->c2.timeval.tv_sec;
+    c->c2.coarse_timer_wakeup = now + c->c2.timeval.tv_sec; /* 设置下次的超时时间 */
 
     dmsg(D_INTERVAL, "TIMER: coarse timer wakeup %" PRIi64 " seconds", (int64_t)c->c2.timeval.tv_sec);
 
@@ -1993,7 +1993,9 @@ pre_select(struct context *c)
     }
 #endif
 
-    /* check coarse timers? */
+    /* check coarse timers? 
+     * 粗糙定时器（一般是秒级+）
+     */
     check_coarse_timers(c);
     if (c->sig->signal_received)
     {
