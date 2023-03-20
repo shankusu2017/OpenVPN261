@@ -1,4 +1,4 @@
-/*
+﻿/*
  *  OpenVPN -- An application to securely tunnel IP networks
  *             over a single TCP/UDP port, with support for SSL/TLS-based
  *             session authentication and key exchange,
@@ -884,6 +884,7 @@ init_tun(const char *dev,        /* --dev option */
 
 /*
  * Platform specific tun initializations
+ * 创建 tun 设备
  */
 void
 init_tun_post(struct tuntap *tt,
