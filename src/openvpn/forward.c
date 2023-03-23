@@ -1398,6 +1398,7 @@ drop_if_recursive_routing(struct context *c, struct buffer *buf)
  * Output: c->c2.to_link
  * 
  * 将来自 tun 设备的原始 ip 包进行 OpenVPN 格式的封装，准备通过 socket_link 链路发出去
+ * 浏览器在 connect 函数的一瞬间，网络协议栈根据路由规则，就会将 socketFD 绑定到 tun 设备上来，这里读到的就是原始的浏览器发出的 ip 包
  */
 
 void
@@ -1431,7 +1432,16 @@ process_incoming_tun(struct context *c)
         /*
          * The --passtos and --mssfix options require
          * us to examine the IP header (IPv4 or IPv6).
+         * 
+         * 从 tun 读到的 ip 头中 src.ip = 10.8.0.6 dst.ip = 47.103.204.157，无需 OpenVPN 再次转换
          */
+        {
+            const struct openvpn_iphdr *ih = get_ipv4_header(&c->c2.buf);
+            if (ih != NULL) {
+                msg(D_SOCKET_DEBUG, "TUNSOCKET process_incoming_tun : tun.ip.packet.src.ip=%u, dsc.ip:%u",
+                            ih->saddr, ih->daddr);
+            }
+        }
         unsigned int flags = PIPV4_PASSTOS | PIP_MSSFIX | PIPV4_CLIENT_NAT
                              | PIPV6_IMCP_NOHOST_CLIENT;
         process_ip_header(c, flags, &c->c2.buf);
@@ -1879,6 +1889,8 @@ process_outgoing_link(struct context *c)
 
 /*
  * Input: c->c2.to_tun
+ *
+ * 将来自 OpenVPN 服务器的 ip 包回写到 tun 设备上，以便让浏览器读到 Google 的返回数据
  */
 
 void
@@ -1894,6 +1906,14 @@ process_outgoing_tun(struct context *c)
     }
 
     perf_push(PERF_PROC_OUT_TUN);
+
+    {
+        const struct openvpn_iphdr *ih = get_ipv4_header(&c->c2.buf);
+        if (ih != NULL) {
+            msg(D_SOCKET_DEBUG, "TUNSOCKET process_outgoing_tun : tun.ip.packet.src.ip=%u, dsc.ip:%u",
+                ih->saddr, ih->daddr);
+        }
+    }
 
     /*
      * The --mssfix option requires

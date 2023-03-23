@@ -34,6 +34,27 @@
 
 #include "memdbg.h"
 
+/* 
+ *  write by shanks
+ * 对合法的 tun 数据读取 ip 头
+ */
+const struct openvpn_iphdr *
+get_ipv4_header(struct buffer *buf)
+{
+    const struct openvpn_iphdr *ih;
+
+    verify_align_4(buf);
+    
+    if (BLEN(buf) < sizeof(struct openvpn_iphdr))
+    {
+        return NULL;
+    }
+    
+
+    ih = (const struct openvpn_iphdr *)(BPTR(buf));
+    return ih;
+}
+
 /*
  * If raw tunnel packet is IPv<X>, return true and increment
  * buffer offset to start of IP header.

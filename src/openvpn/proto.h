@@ -287,6 +287,10 @@ get_tun_ip_ver(int tunnel_type, struct buffer *buf, int *ip_hdr_offset)
     return ip_ver;
 }
 
+/* 提取 ipv4 的头 */
+const struct openvpn_iphdr *
+get_ipv4_header(struct buffer *buf);
+
 /*
  * If raw tunnel packet is IPv4 or IPv6, return true and increment
  * buffer offset to start of IP header.
