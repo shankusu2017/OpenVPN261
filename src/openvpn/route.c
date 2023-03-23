@@ -1551,6 +1551,9 @@ is_on_link(const int is_local_route, const unsigned int flags, const struct rout
     return rgi && (is_local_route == LR_MATCH || ((flags & ROUTE_REF_GW) && (rgi->flags & RGI_ON_LINK)));
 }
 
+/* 
+ * 设置路由表（不同的 OS 调用不用的命令）
+ */
 bool
 add_route(struct route_ipv4 *r,
           const struct tuntap *tt,

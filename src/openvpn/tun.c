@@ -3249,7 +3249,7 @@ open_darwin_utun(const char *dev, const char *dev_type, const char *dev_node, st
             char ifname[20];
             /* if the interface exists silently skip it */
             ASSERT(snprintf(ifname, sizeof(ifname), "utun%d", utunnum) > 0);
-            if (if_nametoindex(ifname))
+            if (if_nametoindex(ifname)) // 查找空闲的设备名
             {
                 continue;
             }

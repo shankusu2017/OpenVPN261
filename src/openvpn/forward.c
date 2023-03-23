@@ -1396,6 +1396,8 @@ drop_if_recursive_routing(struct context *c, struct buffer *buf)
 /*
  * Input:  c->c2.buf
  * Output: c->c2.to_link
+ * 
+ * 将来自 tun 设备的原始 ip 包进行 OpenVPN 格式的封装，准备通过 socket_link 链路发出去
  */
 
 void
@@ -2041,6 +2043,8 @@ pre_select(struct context *c)
  * Wait for I/O events.  Used for both TCP & UDP sockets
  * in point-to-point mode and for UDP sockets in
  * point-to-multipoint mode.
+ * 
+ * 在限定的时间内看 tun/eth 等 io 设备是否有 io 事件发生
  */
 
 void
@@ -2195,7 +2199,7 @@ io_wait_dowork(struct context *c, const unsigned int flags)
 #endif
 
     /*
-     * Possible scenarios:
+     * Possible scenarios（场景）:
      *  (1) tcp/udp port has data available to read
      *  (2) tcp/udp port is ready to accept more data to write
      *  (3) tun dev has data available to read

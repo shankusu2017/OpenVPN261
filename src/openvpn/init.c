@@ -1817,6 +1817,9 @@ can_preserve_tun(struct tuntap *tt)
 #endif
 }
 
+/*
+ * 创建 tun 设备，设置 IP 等网络参数，设置路由表等
+ */
 static bool
 do_open_tun(struct context *c, int *error_flags)
 {
@@ -1914,7 +1917,9 @@ do_open_tun(struct context *c, int *error_flags)
                        c->c2.es);
         }
 
-        /* do ifconfig */
+        /* do ifconfig
+         * 设置 tun 设备的 ip 地址等
+         */
         if (!c->options.ifconfig_noexec
             && ifconfig_order() == IFCONFIG_AFTER_TUN_OPEN)
         {
@@ -2387,6 +2392,7 @@ do_deferred_options_part2(struct context *c)
     return true;
 }
 
+/* 创建 tun设备，设置其网络参数等 */
 bool
 do_up(struct context *c, bool pulled_options, unsigned int option_types_found)
 {
