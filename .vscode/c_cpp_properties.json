@@ -6,7 +6,7 @@
                 "${workspaceFolder}/**"
             ],
             "defines": [
-                "TARGET_DARWIN",
+                "TARGET_LINUX",
                 "HAVE_NET_IF_UTUN_H"
             ],
             "macFrameworkPath": [

@@ -403,4 +403,7 @@ openvpn_errno_maybe_crt(bool *crt_error)
 
 #include "errlevel.h"
 
+void
+print_callstack();
+
 #endif /* ifndef ERROR_H */

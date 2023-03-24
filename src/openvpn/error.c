@@ -42,6 +42,7 @@
 #include "integer.h"
 #include "ps.h"
 #include "mstats.h"
+#include <execinfo.h>
 
 
 #if SYSLOG_CAPABILITY
@@ -1009,3 +1010,24 @@ strerror_win32(DWORD errnum, struct gc_arena *gc)
 }
 
 #endif /* ifdef _WIN32 */
+
+
+void
+print_callstack()
+{
+    int size = 1024;
+	int i;
+	void *array[1024];
+	int stack_num = backtrace(array, size);
+	char **stacktrace = NULL;
+ 
+	msg(M_INFO, "%s begin\n", __func__);
+
+	stacktrace = (char**)backtrace_symbols(array, stack_num);
+ 
+	for (i = 0; i < stack_num; i++) {
+        msg(M_INFO, "%s\n", stacktrace[i]);
+	}
+	free(stacktrace);
+    msg(M_INFO, "%s end\n", __func__);
+}

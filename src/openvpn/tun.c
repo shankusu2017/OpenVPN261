@@ -2084,6 +2084,7 @@ void
 open_tun(const char *dev, const char *dev_type, const char *dev_node, struct tuntap *tt,
          openvpn_net_ctx_t *ctx)
 {
+    print_callstack();
     struct ifreq ifr;
 
     /*
