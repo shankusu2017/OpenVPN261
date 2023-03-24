@@ -954,7 +954,7 @@ read_incoming_link(struct context *c)
                         __func__, __LINE__, ih->saddr, ih->daddr);
         } else {
             msg(D_SOCKET_DEBUG, "SOCKETTUN  %s:%d  ip packet is null",
-                        __func__, __LINE__, ih->saddr, ih->daddr);
+                        __func__, __LINE__);
         }
     }
 
@@ -1270,7 +1270,7 @@ read_incoming_tun(struct context *c)
                         __func__, __LINE__, ih->saddr, ih->daddr);
         } else {
             msg(D_SOCKET_DEBUG, "SOCKETTUN  %s:%d  ip packet is null",
-                        __func__, __LINE__, ih->saddr, ih->daddr);
+                        __func__, __LINE__);
         }
     }
 
@@ -1762,8 +1762,8 @@ process_outgoing_link(struct context *c)
             msg(D_SOCKET_DEBUG, "SOCKETTUN %s:%d tun.ip.packet.src.ip=%u, dsc.ip:%u",
                         __func__, __LINE__, ih->saddr, ih->daddr);
         } else {
-            msg(D_SOCKET_DEBUG, "SOCKETTUN  %s:%d  ip packet is null",
-                        __func__, __LINE__, ih->saddr, ih->daddr);
+            msg(D_SOCKET_DEBUG, "SOCKETTUN  %s:%d ip packet is null",
+                        __func__, __LINE__);
         }
     }
 
@@ -1936,7 +1936,7 @@ process_outgoing_tun(struct context *c)
                         __func__, __LINE__, ih->saddr, ih->daddr);
         } else {
             msg(D_SOCKET_DEBUG, "SOCKETTUN  %s:%d  ip packet is null",
-                        __func__, __LINE__, ih->saddr, ih->daddr);
+                        __func__, __LINE__);
         }
     }
 
