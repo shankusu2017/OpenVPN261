@@ -372,16 +372,19 @@ multi_process_io_udp(struct multi_context *m)
     /* UDP port ready to accept write */
     if (status & SOCKET_WRITE)
     {
+        msg(D_SOCKET_DEBUG, "SOCKETTUN multi_process_outgoing_link");
         multi_process_outgoing_link(m, mpp_flags);
     }
     /* TUN device ready to accept write */
     else if (status & TUN_WRITE)
     {
+        msg(D_SOCKET_DEBUG, "SOCKETTUN multi_process_outgoing_tun");
         multi_process_outgoing_tun(m, mpp_flags);
     }
     /* Incoming data on UDP port */
     else if (status & SOCKET_READ)
     {
+        msg(D_SOCKET_DEBUG, "SOCKETTUN read_incoming_link");
         read_incoming_link(&m->top);
         if (!IS_SIG(&m->top))
         {
@@ -391,6 +394,7 @@ multi_process_io_udp(struct multi_context *m)
     /* Incoming data on TUN device */
     else if (status & TUN_READ)
     {
+        msg(D_SOCKET_DEBUG, "SOCKETTUN read_incoming_tun");
         read_incoming_tun(&m->top);
         if (!IS_SIG(&m->top))
         {
