@@ -1438,7 +1438,7 @@ process_incoming_tun(struct context *c)
         {
             const struct openvpn_iphdr *ih = get_ipv4_header(&c->c2.buf);
             if (ih != NULL) {
-                msg(D_SOCKET_DEBUG, "TUNSOCKET process_incoming_tun : tun.ip.packet.src.ip=%u, dsc.ip:%u",
+                msg(D_SOCKET_DEBUG, "SOCKETTUN process_incoming_tun : tun.ip.packet.src.ip=%u, dsc.ip:%u",
                             ih->saddr, ih->daddr);
             }
         }
@@ -1910,7 +1910,7 @@ process_outgoing_tun(struct context *c)
     {
         const struct openvpn_iphdr *ih = get_ipv4_header(&c->c2.buf);
         if (ih != NULL) {
-            msg(D_SOCKET_DEBUG, "TUNSOCKET process_outgoing_tun : tun.ip.packet.src.ip=%u, dsc.ip:%u",
+            msg(D_SOCKET_DEBUG, "SOCKETTUN process_outgoing_tun : tun.ip.packet.src.ip=%u, dsc.ip:%u",
                 ih->saddr, ih->daddr);
         }
     }
@@ -2299,19 +2299,19 @@ process_io(struct context *c)
     /* TCP/UDP port ready to accept write */
     if (status & SOCKET_WRITE)
     {
-        msg(D_SOCKET_DEBUG, "TUNSOCKET process_outgoing_link");
+        msg(D_SOCKET_DEBUG, "SOCKETTUN process_outgoing_link");
         process_outgoing_link(c);
     }
     /* TUN device ready to accept write */
     else if (status & TUN_WRITE)
     {
-        msg(D_SOCKET_DEBUG, "TUNSOCKET process_outgoing_tun");
+        msg(D_SOCKET_DEBUG, "SOCKETTUN process_outgoing_tun");
         process_outgoing_tun(c);
     }
     /* Incoming data on TCP/UDP port */
     else if (status & SOCKET_READ)
     {
-        msg(D_SOCKET_DEBUG, "TUNSOCKET read_incoming_link");
+        msg(D_SOCKET_DEBUG, "SOCKETTUN read_incoming_link");
         read_incoming_link(c);
         if (!IS_SIG(c))
         {
@@ -2330,7 +2330,7 @@ process_io(struct context *c)
     }
     else if (status & DCO_READ)
     {
-        msg(D_SOCKET_DEBUG, "TUNSOCKET process_incoming_dco");
+        msg(D_SOCKET_DEBUG, "SOCKETTUN process_incoming_dco");
         if (!IS_SIG(c))
         {
             process_incoming_dco(c);
