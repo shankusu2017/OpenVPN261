@@ -468,7 +468,9 @@ tunnel_server_udp(struct context *top)
     top->mode = CM_TOP;
     context_clear_2(top);
 
-    /* initialize top-tunnel instance */
+    /* initialize top-tunnel instance
+     * 初始化 tun 设备
+     */
     init_instance_handle_signals(top, top->es, CC_HARD_USR1_TO_HUP);
     if (IS_SIG(top))
     {

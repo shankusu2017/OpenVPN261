@@ -1890,7 +1890,7 @@ process_outgoing_link(struct context *c)
 /*
  * Input: c->c2.to_tun
  *
- * 将来自 OpenVPN 服务器的 ip 包回写到 tun 设备上，以便让浏览器读到 Google 的返回数据
+ * 对于客户端来说：将来自 OpenVPN 服务器的 ip 包回写到 tun 设备上，以便让浏览器读到 Google 的返回数据
  */
 
 void
@@ -2299,16 +2299,19 @@ process_io(struct context *c)
     /* TCP/UDP port ready to accept write */
     if (status & SOCKET_WRITE)
     {
+        msg(M_INFO, "SOCKETTUN process_outgoing_link");
         process_outgoing_link(c);
     }
     /* TUN device ready to accept write */
     else if (status & TUN_WRITE)
     {
+        msg(M_INFO, "SOCKETTUN process_outgoing_tun");
         process_outgoing_tun(c);
     }
     /* Incoming data on TCP/UDP port */
     else if (status & SOCKET_READ)
     {
+        msg(M_INFO, "SOCKETTUN read_incoming_link");
         read_incoming_link(c);
         if (!IS_SIG(c))
         {
@@ -2318,6 +2321,7 @@ process_io(struct context *c)
     /* Incoming data on TUN device */
     else if (status & TUN_READ)
     {
+        msg(M_INFO, "SOCKETTUN read_incoming_tun");
         read_incoming_tun(c);
         if (!IS_SIG(c))
         {
@@ -2326,6 +2330,7 @@ process_io(struct context *c)
     }
     else if (status & DCO_READ)
     {
+        msg(M_INFO, "SOCKETTUN process_incoming_dco");
         if (!IS_SIG(c))
         {
             process_incoming_dco(c);
