@@ -25,7 +25,6 @@ Makefile.in
 aclocal.m4
 autodefs.h
 autom4te.cache
-config.guess
 config.h
 config.h.in
 config.log
@@ -34,9 +33,7 @@ config.sub
 configure.h
 depcomp
 stamp-h1
-install-sh
 missing
-ltmain.sh
 libtool
 m4/libtool.m4
 m4/ltoptions.m4
