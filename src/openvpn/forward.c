@@ -1252,6 +1252,14 @@ read_incoming_tun(struct context *c)
 
     c->c2.buf = c->c2.buffers->read_tun_buf;
 
+    {
+        const struct openvpn_iphdr *ih = get_ipv4_header(&c->c2.buf);
+        if (ih != NULL) {
+            msg(D_SOCKET_DEBUG, "SOCKETTUN read_incoming_tun : tun.ip.packet.src.ip=%u, dsc.ip:%u",
+                        ih->saddr, ih->daddr);
+        }
+    }
+
 #ifdef _WIN32
     if (c->c1.tuntap->windows_driver == WINDOWS_DRIVER_WINTUN)
     {
