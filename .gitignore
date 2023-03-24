@@ -21,8 +21,6 @@ Win32-Output
 .deps
 .libs
 Makefile
-Makefile.in
-aclocal.m4
 autom4te.cache
 config.h.in
 config.log

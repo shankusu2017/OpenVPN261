@@ -128,16 +128,3 @@
 #define HAVE_DIRNAME 1
 #define HAVE_ACCESS 1
 #define HAVE_STRSEP 1
-/* end confdefs.h.  */
-
-/* Override any GCC internal prototype to avoid an error.
-   Use char because int might match the return type of a GCC
-   builtin and then its argument prototype would still apply.  */
-char gethostbyname ();
-int
-main (void)
-{
-return gethostbyname ();
-  ;
-  return 0;
-}
