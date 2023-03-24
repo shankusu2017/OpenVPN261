@@ -951,10 +951,10 @@ read_incoming_link(struct context *c)
         const struct openvpn_iphdr *ih = get_ipv4_header(&c->c2.buf);
         if (ih != NULL) {
             msg(D_SOCKET_DEBUG, "SOCKETTUN %s:%d tun.ip.packet.src.ip=%u, dsc.ip:%u",
-                        __func__, __line__, ih->saddr, ih->daddr);
+                        __func__, __LINE__, ih->saddr, ih->daddr);
         } else {
             msg(D_SOCKET_DEBUG, "SOCKETTUN  %s:%d  ip packet is null",
-                        __func__, __line__, ih->saddr, ih->daddr);
+                        __func__, __LINE__, ih->saddr, ih->daddr);
         }
     }
 
@@ -1267,10 +1267,10 @@ read_incoming_tun(struct context *c)
         const struct openvpn_iphdr *ih = get_ipv4_header(&c->c2.buf);
         if (ih != NULL) {
             msg(D_SOCKET_DEBUG, "SOCKETTUN %s:%d tun.ip.packet.src.ip=%u, dsc.ip:%u",
-                        __func__, __line__, ih->saddr, ih->daddr);
+                        __func__, __LINE__, ih->saddr, ih->daddr);
         } else {
             msg(D_SOCKET_DEBUG, "SOCKETTUN  %s:%d  ip packet is null",
-                        __func__, __line__, ih->saddr, ih->daddr);
+                        __func__, __LINE__, ih->saddr, ih->daddr);
         }
     }
 
@@ -1760,10 +1760,10 @@ process_outgoing_link(struct context *c)
         const struct openvpn_iphdr *ih = get_ipv4_header(&c->c2.buf);
         if (ih != NULL) {
             msg(D_SOCKET_DEBUG, "SOCKETTUN %s:%d tun.ip.packet.src.ip=%u, dsc.ip:%u",
-                        __func__, __line__, ih->saddr, ih->daddr);
+                        __func__, __LINE__, ih->saddr, ih->daddr);
         } else {
             msg(D_SOCKET_DEBUG, "SOCKETTUN  %s:%d  ip packet is null",
-                        __func__, __line__, ih->saddr, ih->daddr);
+                        __func__, __LINE__, ih->saddr, ih->daddr);
         }
     }
 
@@ -1933,10 +1933,10 @@ process_outgoing_tun(struct context *c)
         const struct openvpn_iphdr *ih = get_ipv4_header(&c->c2.buf);
         if (ih != NULL) {
             msg(D_SOCKET_DEBUG, "SOCKETTUN %s:%d tun.ip.packet.src.ip=%u, dsc.ip:%u",
-                        __func__, __line__, ih->saddr, ih->daddr);
+                        __func__, __LINE__, ih->saddr, ih->daddr);
         } else {
             msg(D_SOCKET_DEBUG, "SOCKETTUN  %s:%d  ip packet is null",
-                        __func__, __line__, ih->saddr, ih->daddr);
+                        __func__, __LINE__, ih->saddr, ih->daddr);
         }
     }
 
