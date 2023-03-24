@@ -57,4 +57,3 @@ tests/unit_tests/engine-key/passwd
 src/openvpn/openvpn
 nbproject
 test-driver
-compile
