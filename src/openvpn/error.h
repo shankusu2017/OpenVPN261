@@ -406,4 +406,6 @@ openvpn_errno_maybe_crt(bool *crt_error)
 void
 print_callstack();
 
+#define MULTI_DEBUG_EVENT_LOOP 1
+
 #endif /* ifndef ERROR_H */

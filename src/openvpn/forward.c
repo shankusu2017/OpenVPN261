@@ -947,6 +947,17 @@ read_incoming_link(struct context *c)
     /* Remove socks header if applicable */
     socks_postprocess_incoming_link(c);
 
+    {
+        const struct openvpn_iphdr *ih = get_ipv4_header(&c->c2.buf);
+        if (ih != NULL) {
+            msg(D_SOCKET_DEBUG, "SOCKETTUN %s:%d tun.ip.packet.src.ip=%u, dsc.ip:%u",
+                        __func__, __line__, ih->saddr, ih->daddr);
+        } else {
+            msg(D_SOCKET_DEBUG, "SOCKETTUN  %s:%d  ip packet is null",
+                        __func__, __line__, ih->saddr, ih->daddr);
+        }
+    }
+
     perf_pop();
 }
 
@@ -1255,8 +1266,11 @@ read_incoming_tun(struct context *c)
     {
         const struct openvpn_iphdr *ih = get_ipv4_header(&c->c2.buf);
         if (ih != NULL) {
-            msg(D_SOCKET_DEBUG, "SOCKETTUN read_incoming_tun : tun.ip.packet.src.ip=%u, dsc.ip:%u",
-                        ih->saddr, ih->daddr);
+            msg(D_SOCKET_DEBUG, "SOCKETTUN %s:%d tun.ip.packet.src.ip=%u, dsc.ip:%u",
+                        __func__, __line__, ih->saddr, ih->daddr);
+        } else {
+            msg(D_SOCKET_DEBUG, "SOCKETTUN  %s:%d  ip packet is null",
+                        __func__, __line__, ih->saddr, ih->daddr);
         }
     }
 
@@ -1742,6 +1756,17 @@ process_outgoing_link(struct context *c)
 
     perf_push(PERF_PROC_OUT_LINK);
 
+    {
+        const struct openvpn_iphdr *ih = get_ipv4_header(&c->c2.buf);
+        if (ih != NULL) {
+            msg(D_SOCKET_DEBUG, "SOCKETTUN %s:%d tun.ip.packet.src.ip=%u, dsc.ip:%u",
+                        __func__, __line__, ih->saddr, ih->daddr);
+        } else {
+            msg(D_SOCKET_DEBUG, "SOCKETTUN  %s:%d  ip packet is null",
+                        __func__, __line__, ih->saddr, ih->daddr);
+        }
+    }
+
     if (c->c2.to_link.len > 0 && c->c2.to_link.len <= c->c2.frame.buf.payload_size)
     {
         /*
@@ -1904,6 +1929,17 @@ process_outgoing_link(struct context *c)
 void
 process_outgoing_tun(struct context *c)
 {
+     {
+        const struct openvpn_iphdr *ih = get_ipv4_header(&c->c2.buf);
+        if (ih != NULL) {
+            msg(D_SOCKET_DEBUG, "SOCKETTUN %s:%d tun.ip.packet.src.ip=%u, dsc.ip:%u",
+                        __func__, __line__, ih->saddr, ih->daddr);
+        } else {
+            msg(D_SOCKET_DEBUG, "SOCKETTUN  %s:%d  ip packet is null",
+                        __func__, __line__, ih->saddr, ih->daddr);
+        }
+    }
+
     /*
      * Set up for write() call to TUN/TAP
      * device.
