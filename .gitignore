@@ -22,12 +22,8 @@ Win32-Output
 .libs
 Makefile
 autom4te.cache
-config.h.in
 config.log
 config.status
-depcomp
-stamp-h1
-vcpkg_installed
 
 msvc-env-local.bat
 doc/openvpn-examples.5

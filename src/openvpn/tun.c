@@ -2286,12 +2286,14 @@ close_tun(struct tuntap *tt, openvpn_net_ctx_t *ctx)
 int
 write_tun(struct tuntap *tt, uint8_t *buf, int len)
 {
+    msg(D_SOCKET_DEBUG, "SOCKETTUN write_tun");
     return write(tt->fd, buf, len);
 }
 
 int
 read_tun(struct tuntap *tt, uint8_t *buf, int len)
 {
+    msg(D_SOCKET_DEBUG, "SOCKETTUN read_tun");
     return read(tt->fd, buf, len);
 }
 

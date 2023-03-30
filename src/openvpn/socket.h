@@ -100,7 +100,7 @@ struct link_socket_actual
 #endif
 };
 
-/* IP addresses which are persistent(³ÖÐø) across SIGUSR1s */
+/* IP addresses which are persistent(ï¿½ï¿½ï¿½ï¿½) across SIGUSR1s */
 struct link_socket_addr
 {
     struct addrinfo *bind_local;
@@ -1058,6 +1058,8 @@ link_socket_read(struct link_socket *sock,
                  struct buffer *buf,
                  struct link_socket_actual *from)
 {
+    msg(D_SOCKET_DEBUG, "SOCKETTUN link_socket_read");
+    
 #ifdef _WIN32
     if (proto_is_udp(sock->info.proto) || sock->dco_installed)
 #else
@@ -1179,6 +1181,7 @@ link_socket_write(struct link_socket *sock,
                   struct buffer *buf,
                   struct link_socket_actual *to)
 {
+    msg(D_SOCKET_DEBUG, "SOCKETTUN link_socket_write");
     if (proto_is_udp(sock->info.proto) || sock->dco_installed)
     {
         /* unified UDPv4 and UDPv6 and DCO (kernel adds size header) */

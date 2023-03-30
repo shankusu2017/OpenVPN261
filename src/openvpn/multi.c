@@ -3570,8 +3570,8 @@ multi_process_incoming_tun(struct multi_context *m, const unsigned int mpp_flags
         }
 
         if (dev_type == DEV_TYPE_TAP && m->top.options.vlan_tagging)
-        {
-            vid = vlan_decapsulate(&m->top, &m->top.c2.buf);
+        {  
+            vid = vlan_decapsulate(&m->top, &m->top.c2.buf);     // capsulate 封装
             if (vid < 0)
             {
                 return false;
