@@ -49,6 +49,10 @@ get_ipv4_header(struct buffer *buf)
     {
         return NULL;
     }
+    // 不是代理包，而是 P_CONTROL_XXX 包？
+    if (4 != OPENVPN_IPH_GET_VER(*BPTR(buf))) {
+        return NULL;
+    }
     
 
     ih = (const struct openvpn_iphdr *)(BPTR(buf));

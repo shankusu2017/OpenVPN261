@@ -846,9 +846,9 @@ check_timeout_random_component(struct context *c)
 static inline void
 socks_postprocess_incoming_link(struct context *c)
 {
+    // 普通配置没开 socks 代理
     if (c->c2.link_socket->socks_proxy && c->c2.link_socket->info.proto == PROTO_UDP)
     {
-        msg(D_SOCKET_DEBUG, "socks_postprocess_incoming_link 11111111111111111");
         socks_process_incoming_udp(&c->c2.buf, &c->c2.from);
     }
 }
@@ -954,7 +954,7 @@ read_incoming_link(struct context *c)
             msg(D_SOCKET_DEBUG, "SOCKETTUN %s:%d tun.ip.packet.src.ip=%u, dsc.ip:%u",
                         __func__, __LINE__, ih->saddr, ih->daddr);
         } else {
-            msg(D_SOCKET_DEBUG, "SOCKETTUN  %s:%d  ip packet is null",
+            msg(D_SOCKET_DEBUG, "SOCKETTUN  %s:%d ip packet is null",
                         __func__, __LINE__);
         }
     }

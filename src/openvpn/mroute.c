@@ -275,7 +275,7 @@ mroute_extract_openvpn_sockaddr(struct mroute_addr *addr,
             {
                 addr->type = MR_ADDR_IPV4 | MR_WITH_PORT;
                 addr->netbits = 0;
-                addr->len = 6;
+                addr->len = 6;  // 4 + 2
                 addr->v4.addr = osaddr->addr.in4.sin_addr.s_addr;
                 addr->v4.port = osaddr->addr.in4.sin_port;
             }
@@ -294,7 +294,7 @@ mroute_extract_openvpn_sockaddr(struct mroute_addr *addr,
             {
                 addr->type = MR_ADDR_IPV6 | MR_WITH_PORT;
                 addr->netbits = 0;
-                addr->len = 18;
+                addr->len = 18; // 16 + 2
                 addr->v6.addr = osaddr->addr.in6.sin6_addr;
                 addr->v6.port = osaddr->addr.in6.sin6_port;
             }
