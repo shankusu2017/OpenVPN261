@@ -24,6 +24,7 @@ Makefile
 autom4te.cache
 config.log
 config.status
+*.pcapng
 
 msvc-env-local.bat
 doc/openvpn-examples.5
