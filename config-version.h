@@ -1,2 +1,0 @@
-#define CONFIGURE_GIT_REVISION "main/32114f78f9bc1adb"
-#define CONFIGURE_GIT_FLAGS "+"

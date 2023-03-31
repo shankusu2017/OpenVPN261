@@ -848,6 +848,7 @@ socks_postprocess_incoming_link(struct context *c)
 {
     if (c->c2.link_socket->socks_proxy && c->c2.link_socket->info.proto == PROTO_UDP)
     {
+        msg(D_SOCKET_DEBUG, "socks_postprocess_incoming_link 11111111111111111");
         socks_process_incoming_udp(&c->c2.buf, &c->c2.from);
     }
 }
