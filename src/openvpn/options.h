@@ -520,7 +520,7 @@ struct options
     int cf_initial_max;
     int cf_initial_per;
 
-    int max_clients;
+    int max_clients;    /* Limit server to a maximum of n concurrent clients */
     int max_routes_per_client;
     int stale_routes_check_interval;
     int stale_routes_ageing_time;

@@ -174,7 +174,7 @@ struct multi_context {
     struct initial_packet_rate_limit *initial_rate_limiter;
     struct mroute_helper *route_helper;
     struct multi_reap *reaper;
-    struct mroute_addr local;
+    struct mroute_addr local;   /* vpn server 分配给client 的 10.0.8.6 这种内网地址 */
     bool enable_c2c;
     int max_clients;
     int tcp_queue_limit;
@@ -208,7 +208,7 @@ struct multi_context {
     struct hash *inotify_watchers;
 #endif
 
-    struct deferred_signal_schedule_entry deferred_shutdown_signal;
+    struct deferred_signal_schedule_entry deferred_shutdown_signal; /* 延期的关机信号 */
 };
 
 /**

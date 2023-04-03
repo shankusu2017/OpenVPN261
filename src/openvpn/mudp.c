@@ -194,6 +194,7 @@ multi_get_create_instance_udp(struct multi_context *m, bool *floated)
     struct multi_instance *mi = NULL;
     struct hash *hash = m->hash;
 
+    /* 将网络地址转换为 map-addr 逻辑中用到的 router-addr */
     if (mroute_extract_openvpn_sockaddr(&real, &m->top.c2.from.dest, true)
         && m->top.c2.buf.len > 0)
     {
@@ -210,7 +211,7 @@ multi_get_create_instance_udp(struct multi_context *m, bool *floated)
         {
             uint32_t peer_id = ntohl(*(uint32_t *)ptr) & 0xFFFFFF;
             peer_id_disabled = (peer_id == MAX_PEER_ID);
-
+            /* 通过 perr_id 来 map */
             if (!peer_id_disabled && (peer_id < m->max_clients) && (m->instances[peer_id]))
             {
                 mi = m->instances[peer_id];
@@ -219,7 +220,7 @@ multi_get_create_instance_udp(struct multi_context *m, bool *floated)
 
                 if (*floated)
                 {
-                    /* reset prefix, since here we are not sure peer is the one it claims to be */
+                    /* reset prefix, since here we are not sure peer is the one it claims（声称） to be */
                     ungenerate_prefix(mi);
                     msg(D_MULTI_MEDIUM, "Float requested for peer %" PRIu32 " to %s", peer_id,
                         mroute_addr_print(&real, &gc));

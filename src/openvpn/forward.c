@@ -883,6 +883,7 @@ link_socket_write_post_size_adjust(int *size,
 
 /*
  * Output: c->c2.buf
+ * 单纯的从 socket 读数据，对数据的处理则放到了其它业务函数中
  */
 
 void
@@ -901,6 +902,7 @@ read_incoming_link(struct context *c)
     c->c2.buf = c->c2.buffers->read_link_buf;
     ASSERT(buf_init(&c->c2.buf, c->c2.frame.buf.headroom));
 
+    /* 从 socket 读*/
     status = link_socket_read(c->c2.link_socket,
                               &c->c2.buf,
                               &c->c2.from);

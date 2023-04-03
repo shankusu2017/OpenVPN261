@@ -911,6 +911,7 @@ socket_foreign_protocol_sd(const struct link_socket *sock)
 
 #endif /* if PORT_SHARE */
 
+/* 数据流是否需要被重置 */
 static inline bool
 socket_connection_reset(const struct link_socket *sock, int status)
 {

@@ -3401,6 +3401,7 @@ multi_process_incoming_link(struct multi_context *m, struct multi_instance *inst
             perf_push(PERF_PROC_IN_LINK);
             lsi = get_link_socket_info(c);
             orig_buf = c->c2.buf.data;
+            /* 进行解密等 */
             if (process_incoming_link_part1(c, lsi, floated))
             {
                 /* nonzero length means that we have a valid, decrypted packed */
@@ -3408,7 +3409,7 @@ multi_process_incoming_link(struct multi_context *m, struct multi_instance *inst
                 {
                     multi_process_float(m, m->pending);
                 }
-
+                /* 解压缩等 */
                 process_incoming_link_part2(c, lsi, orig_buf);
             }
             perf_pop();
