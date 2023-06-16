@@ -381,7 +381,7 @@ struct context_2
      */
     struct buffer buf;
     struct buffer to_tun;
-    struct buffer to_link;
+    struct buffer to_link;  /* 本质是 to_socket */
 
     /* should we print R|W|r|w to console on packet transfers? */
     bool log_rw;

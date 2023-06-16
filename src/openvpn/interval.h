@@ -130,13 +130,13 @@ interval_action(struct interval *top)
 }
 
 /*
- * Measure when n seconds beyond an event have elapsed
+ * Measure(测量) when n seconds beyond an event have elapsed
  */
 
 struct event_timeout
 {
     bool defined;       /**< This timeout is active */
-    interval_t n;       /**< periodic interval for periodic timeouts */
+    interval_t n;       /**< periodic interval(间隔) for periodic timeouts */
     time_t last;        /**< time of last event */
 };
 
